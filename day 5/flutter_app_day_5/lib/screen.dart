@@ -37,7 +37,7 @@ class Screen extends StatelessWidget {
           ),
           const SizedBox(height: 28),
           SizedBox(
-            width: 300, // Adjust the width as needed
+            width: 300,
             child: TextFormField(
               decoration: InputDecoration(
                 label: const Text("User Name"),
@@ -45,11 +45,10 @@ class Screen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              style:
-                  const TextStyle(fontSize: 24), // Adjust text size if needed
+              style: const TextStyle(fontSize: 24),
             ),
           ),
-          const SizedBox(height: 16), // Add space between the fields
+          const SizedBox(height: 16),
           SizedBox(
             width: 300,
             child: TextField(
