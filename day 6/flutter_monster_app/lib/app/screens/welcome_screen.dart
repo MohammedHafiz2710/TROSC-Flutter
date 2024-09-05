@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_monster_app/app/screens/second_welcome_screen.dart';
+import 'package:flutter_monster_app/app/screens/SecondWelcomeScreen.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../widgets/my_sized_box.dart';
+import '../widgets/my_sized_box.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -17,13 +16,10 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Opacity(
-                    opacity: 0.2,
-                    child: SvgPicture.asset(
-                      "assets/images/pattern_1.svg",
-                      width: 422,
-                      height: 472,
-                    ),
+                  SvgPicture.asset(
+                    'assets/images/pattern_1.svg',
+                    width: 422,
+                    height: 472,
                   ),
                   Positioned(
                     top: 174,

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_monster_app/app/widgets/auth_fields.dart';
-import 'package:flutter_monster_app/app/widgets/my_button.dart';
-import 'package:flutter_monster_app/app/widgets/my_container.dart';
 import 'package:flutter_monster_app/cubit/Password_state.dart';
 import 'package:flutter_monster_app/cubit/password_cubit.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../widgets/my_button.dart';
+import '../widgets/my_container.dart';
 import '../widgets/my_sized_box.dart';
+import '../widgets/my_text_field.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  SignupScreen({super.key});
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -19,6 +20,7 @@ class LoginScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: const Color(0xFF141414),
           body: SafeArea(
             child: Padding(
@@ -41,9 +43,10 @@ class LoginScreen extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 32),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'LET’S SIGN YOU IN',
+                          'SIGN UP',
                           style: TextStyle(
                             fontSize: 36,
                             color: Colors.white,
@@ -51,13 +54,25 @@ class LoginScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Text(
-                          'Welcome back. You’ve been missed!',
-                          style: TextStyle(
-                            color: Color(0xFF808696),
-                            fontSize: 14,
-                            letterSpacing: -0.5,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              'Already have an account? ',
+                              style: TextStyle(
+                                color: Color(0xFF808696),
+                                fontSize: 14,
+                                letterSpacing: -0.5,
+                              ),
+                            ),
+                            Text(
+                              'Sign in',
+                              style: TextStyle(
+                                color: Color(0xFFF8FE11),
+                                fontSize: 14,
+                                letterSpacing: -0.5,
+                              ),
+                            )
+                          ],
                         ),
                       ],
                     ),
@@ -66,17 +81,26 @@ class LoginScreen extends StatelessWidget {
                     formKey: formKey,
                   ),
                   mySizedBox(height: 24),
+                  MyTextField(
+                    label: 'Name',
+                    keyboardType: TextInputType.text,
+                    obscureText: false,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Name cannot be empty';
+                      }
+                      return null;
+                    },
+                  ),
+                  mySizedBox(height: 24),
                   Center(
                     child: myButton(
-                        context: context,
-                        text: 'Login',
-                        onPressed: () {
-                        }),
+                        context: context, text: 'Sign Up', onPressed: () {}),
                   ),
                   mySizedBox(height: 24),
                   const Center(
                     child: Text(
-                      'Or login with',
+                      'Or sign up with',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
