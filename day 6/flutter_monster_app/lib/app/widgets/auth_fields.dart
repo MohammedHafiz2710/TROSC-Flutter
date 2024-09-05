@@ -5,19 +5,14 @@ import 'package:flutter_monster_app/cubit/password_cubit.dart';
 import 'my_sized_box.dart';
 import 'my_text_field.dart';
 
-class AuthFields extends StatefulWidget {
+class AuthFields extends StatelessWidget {
   final formKey;
   const AuthFields({super.key, required this.formKey});
 
   @override
-  State<AuthFields> createState() => _AuthFieldsState();
-}
-
-class _AuthFieldsState extends State<AuthFields> {
-  @override
   Widget build(BuildContext context) {
     return Form(
-      key: widget.formKey,
+      key: formKey,
       child: Column(
         children: [
           MyTextField(
