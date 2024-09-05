@@ -20,8 +20,14 @@ class AuthFields extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             obscureText: false,
             validator: (value) {
+              final regExp = RegExp(
+                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+
               if (value!.isEmpty) {
                 return 'Please enter your email';
+              }
+              if (!regExp.hasMatch(value)) {
+                return "enter valid email";
               }
               return null;
             },
@@ -34,6 +40,9 @@ class AuthFields extends StatelessWidget {
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter your password';
+              }
+              if (value.length < 8) {
+                return 'Password must be at least 8 characters';
               }
               return null;
             },

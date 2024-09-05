@@ -95,7 +95,13 @@ class SignupScreen extends StatelessWidget {
                   mySizedBox(height: 24),
                   Center(
                     child: myButton(
-                        context: context, text: 'Sign Up', onPressed: () {}),
+                        context: context,
+                        text: 'Sign Up',
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            print('Sign Up');
+                          }
+                        }),
                   ),
                   mySizedBox(height: 24),
                   const Center(

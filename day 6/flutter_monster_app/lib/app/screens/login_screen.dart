@@ -19,6 +19,7 @@ class LoginScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: const Color(0xFF141414),
           body: SafeArea(
             child: Padding(
@@ -71,6 +72,9 @@ class LoginScreen extends StatelessWidget {
                         context: context,
                         text: 'Login',
                         onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            print('Login');
+                          }
                         }),
                   ),
                   mySizedBox(height: 24),
