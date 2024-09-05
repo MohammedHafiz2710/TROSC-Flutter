@@ -19,6 +19,6 @@ class CounterCubit extends Cubit<CounterState> {
   void reset() {
     temAPoints = 0;
     temBPoints = 0;
-    emit(CounterAIncrement());
+    emit(ResetButton());
   }
 }
