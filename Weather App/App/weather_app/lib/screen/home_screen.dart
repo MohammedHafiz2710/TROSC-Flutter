@@ -8,18 +8,23 @@ import 'package:weather_app/data/icon.dart';
 import 'package:weather_app/widget/my_center.dart';
 import 'package:weather_app/widget/my_circle.dart';
 import 'package:weather_app/widget/my_row.dart';
+import 'package:weather_app/widget/my_search.dart';
 import 'package:weather_app/widget/my_sizedbox.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         top: true,
         child: Container(
           height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           color: Colors.black,
           child: Stack(
             children: [
@@ -37,7 +42,13 @@ class HomeScreen extends StatelessWidget {
               ),
               BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
-                child: BlocBuilder<WeatherBloc, WeatherState>(
+                child: BlocConsumer<WeatherBloc, WeatherState>(
+                  listener: (context, state) {
+                    if (state is WeatherSuccess || state is WeatherFailure) {
+                      _searchController
+                          .clear(); // Clear the search field when state changes
+                    }
+                  },
                   builder: (context, state) {
                     if (state is WeatherSuccess) {
                       return Container(
@@ -48,12 +59,12 @@ class HomeScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("📍: ${state.weather.country}",
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w300)),
-                              Text("${state.weather.areaName}",
+                              MySearch(
+                                  padding: 0, controller: _searchController),
+                              Text(
+                                  "📍${state.weather.country}" +
+                                      ' :' +
+                                      "${state.weather.areaName}",
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 32,
@@ -88,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                                         fontSize: 22,
                                         fontWeight: FontWeight.w300)),
                               ),
-                              mySizedBox(height: 20),
+                              mySizedBox(height: 15),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -136,8 +147,14 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       );
-                    } else {
+                    } else if (state is WeatherLoading) {
                       return const Center(child: CircularProgressIndicator());
+                    } else if (state is WeatherFailure) {
+                      return MySearch(
+                          controller: _searchController, padding: 24);
+                    } else {
+                      return const SizedBox
+                          .shrink(); // Use SizedBox.shrink() to avoid rendering unnecessary widgets
                     }
                   },
                 ),
