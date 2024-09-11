@@ -121,12 +121,12 @@ class HomeScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   myRow(
-                                      image: "assets/12.png",
+                                      image: "assets/13.png",
                                       title: "Max Temp",
                                       value:
                                           "${state.weather.tempMax!.celsius!.round()} °C"),
                                   myRow(
-                                      image: "assets/13.png",
+                                      image: "assets/14.png",
                                       title: "Min Temp",
                                       value:
                                           "${state.weather.tempMin!.celsius!.round()} °C"),
