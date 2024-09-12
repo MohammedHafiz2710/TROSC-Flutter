@@ -26,8 +26,8 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     on<SearchWeather>((event, emit) async {
       emit(WeatherLoading());
       try {
-        WeatherFactory wf = WeatherFactory("5821a8e7282b2ab332585139ab2b9d6b",
-            language: Language.ENGLISH);
+        WeatherFactory wf =
+            WeatherFactory(Your_API, language: Language.ENGLISH);
         Weather weather = await wf.currentWeatherByCityName(event.cityName);
         emit(WeatherSuccess(weather));
       } catch (e) {

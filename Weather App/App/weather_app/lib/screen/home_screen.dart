@@ -154,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                           controller: _searchController, padding: 24);
                     } else {
                       return const SizedBox
-                          .shrink(); // Use SizedBox.shrink() to avoid rendering unnecessary widgets
+                          .shrink();
                     }
                   },
                 ),
