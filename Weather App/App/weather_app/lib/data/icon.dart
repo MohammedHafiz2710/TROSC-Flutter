@@ -17,7 +17,7 @@ class GetIcon extends StatelessWidget {
         return Image.asset("assets/4.png");
       case >= 700 && < 800:
         return Image.asset("assets/5.png");
-      case >= 800 && < 804:
+      case >= 801 && < 804:
         return Image.asset("assets/6.png");
       default:
         return Image.asset("assets/7.png");

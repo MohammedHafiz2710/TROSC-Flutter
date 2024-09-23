@@ -1,8 +1,9 @@
+import 'package:calc/cubit/calculator_state.dart';
+import 'package:calc/widget/my_sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:calc/cubit/calculator_cubit.dart';
 import 'package:calc/widget/my_button.dart';
-import 'cubit/calculator_state.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,12 +16,10 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: BlocConsumer<CalculatorCubit, CalcState>(
             listener: (context, state) {
-              // يمكن إضافة أي إجراءات جانبية هنا، مثل عرض رسالة خطأ
-              // على سبيل المثال:
-              if (state.output == 'Error') {
+              if (state.output == "Error") {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('حدث خطأ في الحساب'),
+                    content: Text("Invalid expression"),
                   ),
                 );
               }
@@ -50,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                               context.read<CalculatorCubit>().setOutput('C')),
                       MyButton(
                           color: const Color(0xff93A3F3),
-                          text: '()',
+                          text: '( )',
                           onPressed: () =>
                               context.read<CalculatorCubit>().setOutput('()')),
                       MyButton(
@@ -65,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                               context.read<CalculatorCubit>().setOutput('del')),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  mySizedBoxd(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -91,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                               context.read<CalculatorCubit>().setOutput('x')),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  mySizedBoxd(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -117,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                               context.read<CalculatorCubit>().setOutput('-')),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  mySizedBoxd(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -143,7 +142,7 @@ class HomeScreen extends StatelessWidget {
                               context.read<CalculatorCubit>().setOutput('+')),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  mySizedBoxd(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -155,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                               context.read<CalculatorCubit>().setOutput('0')),
                       MyButton(
                           color: const Color(0xff333333),
-                          text: '.',
+                          text: '•',
                           onPressed: () =>
                               context.read<CalculatorCubit>().setOutput('.')),
                       MyButton(

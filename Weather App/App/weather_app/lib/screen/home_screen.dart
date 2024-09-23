@@ -45,8 +45,7 @@ class HomeScreen extends StatelessWidget {
                 child: BlocConsumer<WeatherBloc, WeatherState>(
                   listener: (context, state) {
                     if (state is WeatherSuccess || state is WeatherFailure) {
-                      _searchController
-                          .clear(); // Clear the search field when state changes
+                      _searchController.clear();
                     }
                   },
                   builder: (context, state) {
@@ -153,8 +152,7 @@ class HomeScreen extends StatelessWidget {
                       return MySearch(
                           controller: _searchController, padding: 24);
                     } else {
-                      return const SizedBox
-                          .shrink();
+                      return const SizedBox.shrink();
                     }
                   },
                 ),
