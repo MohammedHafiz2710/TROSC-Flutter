@@ -9,7 +9,7 @@ part 'weather_state.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   WeatherBloc() : super(WeatherInitial()) {
-    String Your_API = "5821a8e7282b2ab332585139ab2b9d6b";
+    String Your_API = "API_KEY";
     on<FetchWeather>((event, emit) async {
       emit(WeatherLoading());
       try {
